@@ -8,19 +8,19 @@ RSpec.describe Types::QueryType do
       MartianLibrarySchema.execute(query).as_json
     end
 
-    let!(:items) { create_pair(:item) }
+    let!(:requests) { create_pair(:request) }
 
     let(:query) do
       %(query {
-        items {
-          title
+        requests {
+          description
         }
       })
     end
 
-    it 'returns all items' do
-      expect(result.dig('data', 'items')).to match_array(
-        items.map { |item| { 'title' => item.title } },
+    it 'returns all requests' do
+      expect(result.dig('data', 'requests')).to match_array(
+        requests.map { |request| { 'description' => request.description } },
       )
     end
   end

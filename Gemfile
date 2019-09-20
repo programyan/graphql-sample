@@ -38,10 +38,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "factory_bot_rails", "~> 5.0"
+  gem 'faker'
   gem "rspec-rails", "= 4.0.0.beta2"
-  gem 'awesome_print'
 end
 
 group :development do
@@ -49,6 +50,10 @@ group :development do
   gem 'graphiql-rails'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 
