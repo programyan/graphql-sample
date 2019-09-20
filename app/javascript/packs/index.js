@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Provider from 'components/Provider'
-import Library from 'components/Library';
+import Requests from 'components/Request';
 
 render(
   <Provider>
-    <Library />
+    <Requests />
   </Provider>, document.querySelector('#root')
 )
