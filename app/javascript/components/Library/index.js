@@ -4,9 +4,9 @@ import gql from 'graphql-tag';
 
 const LibraryQuery = gql`
   {
-    items {
+    requests {
       id
-      title
+      description
       user {
         email
       }
@@ -20,9 +20,9 @@ export default () => (
       <div>
         {loading
           ? 'loading...'
-          : data.items.map(({ title, id, user }) => (
+          : data.requests.map(({ description, id, user }) => (
               <div key={id}>
-                <b>{title}</b> {user ? `added by ${user.email}` : null}
+                <b>{description}</b> {user ? `added by ${user.email}` : null}
               </div>
             ))}
       </div>

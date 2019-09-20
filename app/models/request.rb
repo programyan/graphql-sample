@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class User < Sequel::Model
+class Request < Sequel::Model
   unrestrict_primary_key
   
-  one_to_many :requests
+  many_to_one :user
 end

@@ -21,7 +21,7 @@ gem 'webpacker'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+# gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -39,10 +39,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails", "~> 5.0"
+  gem "rspec-rails", "= 4.0.0.beta2"
+  gem 'awesome_print'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'graphiql-rails'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
@@ -53,7 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "graphql", "~> 1.9"
 
-gem 'graphiql-rails', group: :development
-gem "rspec-rails", "= 4.0.0.beta2", :groups => [:development, :test]
-
-gem "factory_bot_rails", "~> 5.0", :groups => [:development, :test]
+gem "sequel-rails"
+gem 'sequel_pg', require: 'sequel'
