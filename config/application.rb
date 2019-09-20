@@ -2,10 +2,11 @@ require_relative 'boot'
 
 require 'rails'
 # Pick the frameworks you want:
+require 'sequel'
 require 'active_model/railtie'
-require 'active_job/railtie'
-require 'active_record/railtie'
-require 'active_storage/engine'
+# require 'active_job/railtie'
+# require 'active_record/railtie'
+# require 'active_storage/engine'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
@@ -35,6 +36,20 @@ module MartianLibrary
       g.helper          false
       g.channel         assets: false
       g.system_tests    false
+    end
+
+    config.sequel.after_connect = proc do
+      Sequel.application_timezone = :local
+      Sequel.database_timezone = :utc
+      Sequel.extension :core_extensions
+      Sequel.extension :pg_json_ops
+      Sequel.extension :pg_array_ops
+      Sequel::Model.db.extension :pg_array
+      Sequel::Model.db.extension :null_dataset
+      Sequel::Model.plugin :timestamps, update_on_create: true
+      Sequel::Model.plugin :validation_helpers
+      Sequel::Model.plugin :active_model
+      Sequel::Model.require_valid_table = false
     end
   end
 end

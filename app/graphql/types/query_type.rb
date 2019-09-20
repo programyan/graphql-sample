@@ -2,13 +2,13 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :items,
-          [Types::ItemType],
+    field :requests,
+          [Types::RequestType],
           null: false,
           description: 'Returns a list of items in the martian library'
 
-    def items
-      Item.all
+    def requests
+      Request.all
     end
   end
 end
