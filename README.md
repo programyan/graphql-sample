@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple project builded to figure out the GrapQL.
 
-Things you may want to cover:
+### Done
 
-* Ruby version
+* Simple Query
 
-* System dependencies
+* Simple Mutation
 
-* Configuration
+### TODO
 
-* Database creation
+* Authorization
 
-* Database initialization
+* MongoDB
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Realtime mutations
 
 * ...
