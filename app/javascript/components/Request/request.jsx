@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
 import { Button, FormField } from 'components/shared'
 
-const Request = ({ request: { id, description, details, user: { email } } }) => {
+import { Update } from 'queries/Request'
+
+const Request = ({ request }) => {
   const [show, setShow] = useState(true);
+  const [description, setDescription] = useState(request.description)
+  const [details, setDetails] = useState(request.details)
+  const [email, setEmail] = useState(request.user.email)
+  const [updateRequest, { data }] = useMutation(Update);
 
   const edit = () => setShow(false)
   const update = () => {
-    // Mutate
+    updateRequest({ variables: { id: request.id, description, details, email } })
     setShow(true)
   }
 
   const render_show = () =>
-    <tr key={id}>
+    <tr key={request.id}>
       <td>{description}</td>
       <td>{details}</td>
       <td>{email}</td>
@@ -21,15 +28,15 @@ const Request = ({ request: { id, description, details, user: { email } } }) => 
     </tr>
 
   const render_edit = () =>
-    <tr key={id}>
+    <tr key={request.id}>
       <td>
-        <FormField name='description' value={description}/>
+        <FormField name='description' value={description} onChange={setDescription}/>
       </td>
       <td>
-        <FormField name='details' value={details}/>
+        <FormField name='details' value={details}  onChange={setDetails}/>
       </td>
       <td>
-        <FormField name='email' value={email}/>
+        <FormField name='email' value={email} onChange={setEmail}/>
       </td>
       <td>
         <Button primary text='Сохранить' onClick={update}/>

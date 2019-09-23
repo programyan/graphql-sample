@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 export const FormField = (props) => {
   const { type, label, name, placeholder, hint } = props
   const [value, setValue] = useState(props.value)
-  const onChange = ({ target: { value } }) => setValue(value)
+  const onChange = ({ target: { value } }) => {
+    setValue(value)
+    if (props.onChange) props.onChange(value)
+  }
 
   return (
     <div className="form-group">
@@ -21,7 +24,8 @@ FormField.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  hint: PropTypes.string
+  hint: PropTypes.string,
+  onChange: PropTypes.func,
 }
 
 FormField.defaultProps = {

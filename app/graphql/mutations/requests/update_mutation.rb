@@ -14,6 +14,7 @@ module Mutations
         request = Request[id]
         request.user.update(email: email) if email
         request.update(attributes)
+        request
       end
     end
   end
