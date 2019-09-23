@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 export const FormField = (props) => {
-  const { type, label, name, placeholder, hint } = props
-  const [value, setValue] = useState(props.value)
+  const { type, label, name, placeholder, hint, value } = props
+
   const onChange = ({ target: { value } }) => {
-    setValue(value)
     if (props.onChange) props.onChange(value)
   }
 
