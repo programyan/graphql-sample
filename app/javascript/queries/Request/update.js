@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { RequestFragment } from 'queries/fragments'
 
 export const Update = gql`
   mutation UpdateRequest(
@@ -9,10 +10,8 @@ export const Update = gql`
   ),
   {
     updateRequest(id: $id, description: $description, details: $details, email: $email) {
-      id
-      details
-      description
-      user { email }
+      ...RequestFragment
     }
   }
+  ${RequestFragment}
 `

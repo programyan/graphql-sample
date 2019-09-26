@@ -1,14 +1,11 @@
 import gql from 'graphql-tag';
+import { RequestFragment } from 'queries/fragments'
 
 export const Load = gql`
   {
     requests {
-      id
-      description
-      details
-      user {
-        email
-      }
+      ...RequestFragment
     }
   }
+  ${RequestFragment}
 `
