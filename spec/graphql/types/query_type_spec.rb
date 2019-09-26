@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Types::QueryType do
   describe 'items' do
     subject(:result) do
-      MartianLibrarySchema.execute(query).as_json
+      MainSchema.execute(query).as_json
     end
 
     let!(:requests) { create_pair(:request) }
