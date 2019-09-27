@@ -11,10 +11,10 @@ module Mutations
       type Types::RequestType
 
       def resolve(id:, email:, **attributes)
-        request = Request[id]
+        request = Request.eager(:user).with_pk(id)
         request.user.update(email: email) if email
         request.update(attributes)
-        MainSchema.subscriptions.trigger("updateRequest", {}, request)
+        MainSchema.subscriptions.trigger("updateRequest", {}, request.to_hash.tap { |res| res[:user] = request.user.to_hash })
         request
       end
     end

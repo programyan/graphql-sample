@@ -1,6 +1,4 @@
 class GraphqlChannel < ApplicationCable::Channel
-  include GraphQL::ExecutionConcern
-
   def subscribed
     @subscription_ids = []
   end
